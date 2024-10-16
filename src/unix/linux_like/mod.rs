@@ -213,7 +213,11 @@ s! {
 }
 
 cfg_if! {
-    if #[cfg(any(target_env = "gnu", target_os = "android"))] {
+    if #[cfg(any(
+        target_env = "gnu",
+        target_os = "android",
+        target_env = "musl"
+    ))] {
         s! {
             pub struct statx {
                 pub stx_mask: crate::__u32,
@@ -1596,7 +1600,11 @@ cfg_if! {
 }
 
 cfg_if! {
-    if #[cfg(any(target_env = "gnu", target_os = "android"))] {
+    if #[cfg(any(
+        target_env = "gnu",
+        target_os = "android",
+        target_env = "musl"
+    ))] {
         pub const AT_STATX_SYNC_TYPE: c_int = 0x6000;
         pub const AT_STATX_SYNC_AS_STAT: c_int = 0x0000;
         pub const AT_STATX_FORCE_SYNC: c_int = 0x2000;
@@ -2073,7 +2081,11 @@ cfg_if! {
 
 // The statx syscall, available on some libcs.
 cfg_if! {
-    if #[cfg(any(target_env = "gnu", target_os = "android"))] {
+    if #[cfg(any(
+        target_env = "gnu",
+        target_os = "android",
+        target_env = "musl"
+    ))] {
         extern "C" {
             pub fn statx(
                 dirfd: c_int,

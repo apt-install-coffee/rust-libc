@@ -5,15 +5,7 @@
 
 set -eux
 
-case ${1} in
-    loongarch64)
-        musl_version=1.2.5
-        ;;
-    *)
-        musl_version=1.1.24
-        ;;
-esac
-
+musl_version=1.2.5
 musl="musl-${musl_version}"
 
 # Download, configure, build, and install musl:
